@@ -6,20 +6,17 @@ var productSchema = mongoose.Schema({
   name: {
     type: String
   },
-  name: {
-    type: String
-  },
   url: {
     type: String
   },
   ean: {
     type: Number
   },
-  site_id: {
+  idSite: {
     type:  mongoose.Schema.ObjectId,
     ref: 'site'
   },
-  menu_id: {
+  idMenu: {
     type: mongoose.Schema.ObjectId,
     ref: 'menu'
   },

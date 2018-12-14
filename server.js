@@ -8,7 +8,7 @@ let mongoose = require('mongoose');
 var cors = require('cors');
 let app = express();
 
-app.use(cors({origin: 'http://localhost:1337'}));
+app.use(cors({origin: 'http://localhost:4200'}));
 
 // Configure bodyparser to handle post requests
 app.use(bodyParser.urlencoded({
