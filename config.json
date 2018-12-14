@@ -1,0 +1,4 @@
+{
+    "connectionString": "mongodb://admin:admin123@ds249503.mlab.com:49503/ds119988.mlab.com:19988/ripoff",
+    "secret": "RipOff"
+}
