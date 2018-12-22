@@ -42,13 +42,13 @@ const errorHandler = require('_helpers/error-handler');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({origin: 'http://localhost:4200'}));
 
 // use JWT auth to secure the api
 app.use(jwt());
 
 // api routes
-app.use('/users', require('./users/users.controller'));
+app.use('/user', require('./user/user.controller'));
 
 // global error handler
 app.use(errorHandler);

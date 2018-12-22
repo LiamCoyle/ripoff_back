@@ -1,6 +1,6 @@
 const expressJwt = require('express-jwt');
 const config = require('config.json');
-const userService = require('../users/user.service');
+const userService = require('../user/user.service');
 
 module.exports = jwt;
 
@@ -8,11 +8,11 @@ function jwt() {
     const secret = config.secret;
     return expressJwt({ secret, isRevoked }).unless({
         path: [
-            // public routes that don't require authentication
-            '/users/authenticate',
-            '/users/register',
-            '/users/current',
-            '/users/'
+            '/',
+            '/user/authenticate',
+            '/user/register',
+            '/user/current',
+            '/user'
         ]
     });
 }
