@@ -5,14 +5,8 @@ const schema = new Schema({
     mail: { type: String, unique: true, required: true },
     hash: { type: String, required: true },
     password: { type: String, required: true },
-    societe: { type: String, required: false },
-    siret: { type: String, required: false },
-    tel: { type: String, required: false },
     username: { type: String, required: false },
     adresse: { type: String, required: false },
-    cp: { type: String, required: false },
-    ville: { type: String, required: false },
-    site: { type: String, required: false },
     createdDate: { type: Date, default: Date.now }
 });
 

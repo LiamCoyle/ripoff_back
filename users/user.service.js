@@ -14,19 +14,25 @@ module.exports = {
 };
 
 async function authenticate({ mail, password }) {
+    console.log(mail);
+    console.log(password);
     const user = await User.findOne({ mail });
+    console.log(user);
     if (user && bcrypt.compareSync(password, user.hash)) {
         const { hash, ...userWithoutHash } = user.toObject();
         const token = jwt.sign({ sub: user.id }, config.secret);
         return {
             ...userWithoutHash
-            //,token
+            ,token
         };
     }
 }
 
 async function getAll() {
+    /*let tmp = [];
+    tmp.push({'mail' : 'test', 'password' : 'test'})*/
     return await User.find().select('-hash');
+    //return tmp;
 }
 
 async function getById(id) {
