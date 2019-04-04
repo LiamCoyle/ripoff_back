@@ -1,4 +1,5 @@
 {
     "connectionString": "mongodb://admin:admin123@ds119988.mlab.com:19988/ripoff",
-    "secret": "RipOff"
+    "secret": "RipOff",
+    "salt" : 10
 }

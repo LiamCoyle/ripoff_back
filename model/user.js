@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
     mail: { type: String, unique: true, required: true },
-    hash: { type: String, required: true },
+    hashedPassword: { type: String, required: true },
     password: { type: String, required: true },
     societe: { type: String, required: false },
     siret: { type: String, required: false },
@@ -13,6 +13,7 @@ const schema = new Schema({
     cp: { type: String, required: false },
     ville: { type: String, required: false },
     site: { type: String, required: false },
+    isAdmin : { type: Boolean, required: false },
     createdDate: { type: Date, default: Date.now }
 });
 

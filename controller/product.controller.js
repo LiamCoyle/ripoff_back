@@ -1,25 +1,37 @@
-const express = require('express');
-const router = express.Router();
-const productService = require('../service/product.service');
-
-// routes
-
-router.get('/', getAll);
-router.get('/:id', getById);
+const Product = require('../model/product');
 
 
-module.exports = router;
+
+// Find and return all User from the database.
+exports.findAll = (req, res) => {
+    Product.find()
+    .then(products => {
+        res.send(products);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while finding products."
+        });
+    });
+};
 
 
-function getAll(req, res, next) {
-    productService.getAll()
-        .then(products => res.json(products))
-        .catch(err => next(err));
-}
-
-function getById(req, res, next) {
-    productService.getById(req.params.id)
-        .then(product => product ? res.json(product) : res.sendStatus(404))
-        .catch(err => next(err));
-}
-
+exports.findOne = (req, res) => {
+    Product.findById(req.params.id)
+    .then(product => {
+        if(!product) {
+            return res.status(404).send({
+                message: "product not found with id " + req.params.id
+            });
+        }
+        res.send(user);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "Product not found with id " + req.params.id
+            });
+        }
+        return res.status(500).send({
+            message: "Error retrieving product with id " + req.params.id
+        });
+    });
+};
