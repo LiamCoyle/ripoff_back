@@ -7,5 +7,6 @@ mongoose.connect(config.connectionString,  {useNewUrlParser: true});
 mongoose.Promise = global.Promise;
 
 module.exports = {
-    User: require('../model/user')
+    User: require('../model/user'),
+    Product: require('../model/product')
 };

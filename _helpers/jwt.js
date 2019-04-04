@@ -12,7 +12,8 @@ function jwt() {
             '/user/authenticate',
             '/user/register',
             '/user/current',
-            '/user'
+            '/user',
+            '/product'
 
         ]
     });
