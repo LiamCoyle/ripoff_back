@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 
-const schema = new Schema({
+let schema = new Schema({
     name: { type: String, required: true },
     price: { type: Number, required: true },
     currency: { type: String, required: true },

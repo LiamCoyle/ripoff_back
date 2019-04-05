@@ -1,12 +1,16 @@
-const express = require('express');
-const router = express.Router();
-const userController = require('../controller/user.controller')
+let express = require('express');
+let router = express.Router();
+let userController = require('../controller/user.controller');
+let auth = require('../_helper/auth');
 
 // routes
-router.get('/', userController.getAll);
-router.get('/:id', userController.getById);
-router.put('/:id', userController.update);
-router.delete('/:id', userController.delete);
+router.route('/')
+    .get(auth.token, userController.findAll);
+
+router.route('/:id')
+    .get(auth.token, userController.findOne)
+    .put(auth.token, userController.update)
+    .delete(auth.token, userController.delete);
 
 
 

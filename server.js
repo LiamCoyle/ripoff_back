@@ -1,25 +1,25 @@
 
 
 require('rootpath')();
-const express = require('express');
-const app = express();
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const jwt = require('_helpers/jwt');
-const errorHandler = require('_helpers/error-handler');
-const router = express.Router();
+let express = require('express');
+let app = express();
+let cors = require('cors');
+let bodyParser = require('body-parser');
+let errorHandler = require('_helper/error-handler');
+let mongoose = require('mongoose');
+let config = require('config.json');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors({origin: 'http://localhost:4200'}));
+app.use(cors()); //{origin: 'http://localhost:4200'}
 
-// use JWT auth to secure the api
-app.use(jwt());
 
+mongoose.connect(config.connectionString,  {useNewUrlParser: true});
+mongoose.Promise = global.Promise;
 // api routes
-const apiRoute = require('./route/api.route');
-const userRoute = require('./route/user.route');
-const productRoute = require('./route/product.route');
+let apiRoute = require('./route/api.route');
+let userRoute = require('./route/user.route');
+let productRoute = require('./route/product.route');
 
 app.use('/user', userRoute);
 app.use('/product', productRoute);
