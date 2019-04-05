@@ -20,9 +20,11 @@ mongoose.Promise = global.Promise;
 let apiRoute = require('./route/api.route');
 let userRoute = require('./route/user.route');
 let productRoute = require('./route/product.route');
+let brandRoute = require('./route/brand.route');
 
 app.use('/user', userRoute);
 app.use('/product', productRoute);
+app.use('/brand', brandRoute);
 app.use('/', apiRoute);
 
 

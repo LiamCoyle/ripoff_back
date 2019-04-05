@@ -6,6 +6,7 @@ let schema = new Schema({
     price: { type: Number, required: true },
     currency: { type: String, required: true },
     idSite: { type: Number, required: true },
+    idBrand: { type: Schema.Types.ObjectId, required: false },
 });
 
 schema.set('toJSON', { virtuals: true });

@@ -7,7 +7,7 @@ exports.findAll = (req, res) => {
     console.log("product");
     Product.find({}, function(err, products){
         if(err) res.status(500).json({err: err});
-        res.status(400).json(products);
+        res.status(200).json(products);
     });
 };
 
@@ -20,6 +20,6 @@ exports.findOne = (req, res) => {
                 message: "Product not found with id " + req.params.id
             });
         }
-        res.json(product);
+        res.status(200).json(product);
     })
 };
