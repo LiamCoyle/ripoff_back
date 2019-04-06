@@ -8,13 +8,14 @@ let schema = new Schema({
     /*societe: { type: String, required: false },
     siret: { type: String, required: false },
     tel: { type: String, required: false },*/
-    username: { type: String, required: false },
+    name: { type: String, required: false },
    /* adresse: { type: String, required: false },
     cp: { type: String, required: false },
     ville: { type: String, required: false },
     site: { type: String, required: false },
     isAdmin : { type: Boolean, required: false },
     createdDate: { type: Date, default: Date.now , required: false}*/
+    createdAt: { type: Date, required: false}
 });
 schema.pre('save', function(next) {
     let currentDate = new Date();
