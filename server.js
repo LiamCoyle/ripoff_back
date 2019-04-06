@@ -1,5 +1,3 @@
-
-
 require('rootpath')();
 let express = require('express');
 let app = express();
@@ -21,10 +19,16 @@ let apiRoute = require('./route/api.route');
 let userRoute = require('./route/user.route');
 let productRoute = require('./route/product.route');
 let brandRoute = require('./route/brand.route');
+let siteRotue = require('./route/site.route');
+let categoryRoute = require('./route/category.route');
+let productTypeRoute = require('./route/productType.route');
 
 app.use('/user', userRoute);
 app.use('/product', productRoute);
 app.use('/brand', brandRoute);
+app.use('/site', siteRotue);
+app.use('/category', categoryRoute);
+app.use('/productType', productTypeRoute);
 app.use('/', apiRoute);
 
 

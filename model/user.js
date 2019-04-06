@@ -17,18 +17,15 @@ let schema = new Schema({
     createdDate: { type: Date, default: Date.now , required: false}*/
 });
 schema.pre('save', function(next) {
-    // get the current date
     let currentDate = new Date();
 
-    // change the updated_at field to current date
     this.updatedAt = currentDate;
-
-    // if created_at doesn't exist, add to that field
-    if (!this.created_at)
+    
+    if (!this.createdAt)
         this.createdAt = currentDate;
 
     next();
 });
-/*schema.set('toJSON', { virtuals: true });*/
+schema.set('toJSON', { virtuals: true });
 
 module.exports = mongoose.model('User', schema);
