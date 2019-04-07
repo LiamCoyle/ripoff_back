@@ -1,4 +1,4 @@
-let jwt = require('jsonwebtoken');
+
 let conf = require('config.json');
 
 exports.token = (req, res, next) => {
