@@ -17,20 +17,20 @@ exports.login = (req, res) => {
             let token = jwt.sign({ id: user._id },CONF.secret, {
                 expiresIn: 86400
             });
-            res.status(200).json({ auth: true, token: token });
+            res.status(200).json(token);
         }else{
             res.status(404).json('Password error');
         }
     });
 };
 
-exports.register = (req, res) => {
+exports.register = (req, res) => { // not used
 
     let user = {
         mail : req.body.email,
         password : req.body.password,
         hashedPassword : bcrypt.hashSync(req.body.password, CONF.salt),
-        isAdmin:req.body.role
+        isAdmin:req.body.isAdmin
     };
     
     User.save(user, function(err, current_user){
@@ -39,10 +39,10 @@ exports.register = (req, res) => {
         let token = jwt.sign({ id: user._id }, CONF.secret, {
                 expiresIn: 86400
             });
-        res.status(200).json({ auth: true, token: token, body: req.body });
+        res.status(200).json(token);
     });
 }
 
-exports.logout = (req, res) => {
+exports.logout = (req, res) => { // not used
     res.status(200).json({ auth: false, token: null });
 }

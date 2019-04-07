@@ -1,5 +1,6 @@
 let User = require('../model/user');
 let CONF = require('../config.json');
+let bcrypt = require('bcrypt');
 
 // Create and Save a new user
 exports.create = (req, res) => {
@@ -7,14 +8,13 @@ exports.create = (req, res) => {
     const user = new User({
         mail: req.body.mail,
         password: req.body.password,
-        username:req.body.username,
-        isAdmin:req.body.admin
+        name:req.body.name
     });
 
     let hashedPassword = bcrypt.hashSync(req.body.password, CONF.salt);
     user.hashedPassword = hashedPassword;
     user.save((err, data)=>{
-        if(err) res.status(500).json({err:err, message: "Error crearing new user"});
+        if(err) res.status(500).json({err:err, message: "Error creating new user"});
         res.status(200).json(data);
     });
 };
@@ -41,8 +41,7 @@ exports.update = (req, res) => {
     User.findByIdAndUpdate(req.params.id, {
         mail: req.body.mail,
         password: req.body.password,
-        name:req.body.name,
-        role:req.body.role
+        name:req.body.name
     }, {new: true}, (err, user)=>{
         if(err){res.status(500).send({err:err, message:"Error updating user with id " + req.params.id})}
         if(!user){res.status(404).send({ message:"User not found with id " + req.params.id})}

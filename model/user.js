@@ -13,9 +13,10 @@ let schema = new Schema({
     cp: { type: String, required: false },
     ville: { type: String, required: false },
     site: { type: String, required: false },
-    isAdmin : { type: Boolean, required: false },
+    
     createdDate: { type: Date, default: Date.now , required: false}*/
-    createdAt: { type: Date, required: false}
+    createdAt: { type: Date, required: false},
+    isAdmin : { type: Boolean, default: false, required: false }
 });
 schema.pre('save', function(next) {
     let currentDate = new Date();

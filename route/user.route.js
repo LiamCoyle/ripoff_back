@@ -5,13 +5,13 @@ let auth = require('../_helper/auth');
 
 // routes
 router.route('/')
-    .get(auth.token, userController.findAll);
+    .get(auth.token, userController.findAll)
+    .post(userController.create);
 
 router.route('/:id')
     .get(auth.token, userController.findOne)
     .put(auth.token, userController.update)
     .delete(auth.token, userController.delete);
-
 
 
 module.exports = router;

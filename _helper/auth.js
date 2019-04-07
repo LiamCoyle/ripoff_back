@@ -1,5 +1,6 @@
-
+let jwt = require('jsonwebtoken');
 let conf = require('config.json');
+let User = require('../model/user')
 
 exports.token = (req, res, next) => {
 
@@ -10,9 +11,13 @@ exports.token = (req, res, next) => {
                 if (err) {
                     res.status(403).json({ status: "error", message: err.message });
                 } else {
-                    console.log(`mail: ${decoded.mail}`);
-                    req.user= decoded;
-                    next();
+                    console.log(`id: ${decoded.id}`);
+                    
+                    User.findById(decoded.id, (err, user)=>{
+                        req.user= user;
+                        next();
+                    });
+                    
                 }
             });
         } else
