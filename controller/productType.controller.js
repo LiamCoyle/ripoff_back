@@ -23,3 +23,15 @@ exports.findOne = (req, res) => {
         res.status(200).json(productType);
     })
 };
+
+exports.findAllByCategory = (req, res) => {
+    ProductType.find({idCategory: req.params.idCategory}, (err, productTypes) => {
+        if(err){
+            res.status(404).json({
+                err: err,
+                message: "ProductType not found with Category id " + req.params.id
+            });
+        }
+        res.status(200).json(productTypes);
+    })
+};

@@ -20,6 +20,6 @@ exports.findOne = (req, res) => {
                 message: "Brand not found with id " + req.params.id
             });
         }
-        res.json(brand);
+        res.status(200).json(brand);
     })
 };
